@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+
+
+<body><h1>Host your own Tor site</h1>
+    <p style="text-align: center;"><a href="/">[ ← Back Home ]</a></p><br>
+    
+    <main>
+        <h1>Dependencies</h1>
+        <p>- Tor</p>
+        <p>- Tor Browser</p>
+        <p>- Nginx</p>
+        <p>- Go (OPTIONAL)</p>
+        <p>- Onionshare (OPTIONAL)</p>
+        <h1>Installation</h1>
+        <p>Firstly, Install the Tor service and Nginx</p>
+        <div class="codebox">
+            <code>   
+                <p>sudo apt install tor</p>
+                <p>sudo apt install nginx</p>
+            </code>
+        </div>
+
+        <p>You can install Tor Browser from their site <a href="https://www.torproject.org/download/">Here</a></p>
+
+        <p>Secondly, run these commands to make your site up and running</p>
+        <div class="codebox">
+            <code>   
+                <p>sudo systemctl start tor</p>
+                <p>sudo systemctl start nginx</p>
+            </code>
+        </div>
+        <p>Now your site is up and running, But we need to edit some stuff</p>
+        <p>#Uncomment the HiddenServiceDir and HiddenServicePort</p>
+        <div class="codebox">
+            <code>   
+                <p>sudo nano /etc/tor/torrc</p>
+                <p>sudo systemctl restart tor</p>
+                <p>sudo cat /var/lib/tor/hidden_service/hostname</p>
+                
+
+            </code>
+        </div>
+    
+        <p>And you should get a long string that ends with .onion that's your site's link and you can visit it right now !</p>
+        <p>But we don't have anything to show, So you can go to /var/www/html and put your site there!</p>
+
+        <h1>Web Apps</h1>
+        <p>Web Apps are hard to deploy on Tor, It took me lots of time to do so, So for this example we're gonna use an imageboard <a href="https://github.com/rls-moe/nyx">Which you can download here</a> Made in Go</p>
+        <p>To make it short, just make sure your WebApp is hosted on port 80, which i edited in config/config.go then ran the main.go file and taadaa! it's up, this apply's to basically everything else.</p>
+        <h1>Alternative version</h1>
+        <p>If this sounds like a lot of steps for you, You can use Onionshare</p>
+        <div class="codebox">
+            <code>   
+                <p>sudo apt install onionshare</p>
+                
+
+            </code>
+        </div>
+        <p>Note that APT will give you an old version, i recommend downloading the latest from their site <a href="https://onionshare.org/">here</a></p>
+        <p>All you need to do, is select the mode you want and drag-n-drop your files and you're good to go, make sure to disable the password</p>
+    
+    
+    
+    
+    
+            </main><footer>
+        <hr>
+        
+        <p><i>See an error, or want to contribute? Report it in the Forums</i> 
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+           
+        <br><br>
+    
+        
+    </footer>
+    
+    
+    </body>
+</html>
